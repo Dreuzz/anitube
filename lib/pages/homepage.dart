@@ -1,5 +1,6 @@
 import 'package:anitube/anime.dart';
 import 'package:anitube/fetch_data.dart';
+import 'package:anitube/pages/animeplayer.dart';
 import 'package:flutter/material.dart';
 
 class AnimeWatch extends StatefulWidget {
@@ -47,13 +48,20 @@ class _AnimeWatchState extends State<AnimeWatch> {
                   leading: Image.network(
                     anime.image,
                     width: 70, // You can adjust the width as needed
-                    height:
-                        double.infinity, // Adjust the height to fit your layout
+                    height: 160, // Adjust the height to fit your layout
                     fit: BoxFit
                         .cover, // This ensures the image covers the space neatly
                   ),
                   title: Text(anime.title),
                   subtitle: Text(anime.releaseDate),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MyWidget(),
+                      ),
+                    );
+                  },
                 );
               },
             );

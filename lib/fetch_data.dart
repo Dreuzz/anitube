@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'anime.dart'; // Ensure this matches the filename and class name
 import 'package:http/http.dart' as http;
 
@@ -15,7 +16,9 @@ Future<List<Anime>> fetchAnimes() async {
       throw Exception('Failed to load anime list');
     }
   } catch (e) {
-    print(e.toString());
+    if (kDebugMode) {
+      print(e.toString());
+    }
     return [];
   }
 }
