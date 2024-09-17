@@ -1,14 +1,17 @@
-import 'package:anitube/fetch_server.dart';
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class Player extends StatelessWidget {
+  final String title;
+  final String image;
+  final String subtitle;
 
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
+  const Player({
+    super.key,
+    required this.title,
+    required this.image,
+    required this.subtitle,
+  });
 
-class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,21 +21,27 @@ class _MyWidgetState extends State<MyWidget> {
         title: const Text('Anitube'),
         elevation: 50,
       ),
-      body: FutureBuilder<List>(
-          future: fetchServer(),
-          builder: (context, snapshot) {
-            return ListView.builder(
-              itemCount: snapshot.data?.length ?? 0,
-              itemBuilder: (context, index) {
-                var anime = snapshot.data![index];
-                return Column(
-                  children: [
-                    (anime.headers.referer),
-                  ],
-                );
-              },
-            );
-          }),
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(16),
+              child: Image.network(
+                image,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 24),
+            ),
+            Center(
+              child: Text(subtitle),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

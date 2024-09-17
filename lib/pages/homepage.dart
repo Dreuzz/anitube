@@ -47,10 +47,7 @@ class _AnimeWatchState extends State<AnimeWatch> {
                 return ListTile(
                   leading: Image.network(
                     anime.image,
-                    width: 70, // You can adjust the width as needed
-                    height: 160, // Adjust the height to fit your layout
-                    fit: BoxFit
-                        .cover, // This ensures the image covers the space neatly
+                    fit: BoxFit.cover,
                   ),
                   title: Text(anime.title),
                   subtitle: Text(anime.releaseDate),
@@ -58,7 +55,10 @@ class _AnimeWatchState extends State<AnimeWatch> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MyWidget(),
+                        builder: (context) => Player(
+                            title: anime.title,
+                            image: anime.image,
+                            subtitle: anime.releaseDate),
                       ),
                     );
                   },
