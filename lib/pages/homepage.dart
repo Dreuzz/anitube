@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:anitube/anime.dart';
 import 'package:anitube/fetch_data.dart';
 import 'package:anitube/pages/animeplayer.dart';
@@ -23,11 +25,20 @@ class _AnimeWatchState extends State<AnimeWatch> {
     _FetchData();
   }
 
+  TextEditingController search = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.search),
+            tooltip: 'Go to the next page',
+            onPressed: () {},
+          ),
+        ],
+        backgroundColor: Colors.deepPurple[400],
         centerTitle: true,
         title: const Text('Anitube'),
         elevation: 50,
@@ -45,6 +56,8 @@ class _AnimeWatchState extends State<AnimeWatch> {
               itemBuilder: (context, index) {
                 var anime = snapshot.data![index];
                 return ListTile(
+                  tileColor: Colors.deepPurpleAccent[100],
+                  hoverColor: const Color.fromARGB(88, 193, 187, 199),
                   leading: Image.network(
                     anime.image,
                     fit: BoxFit.cover,
