@@ -16,11 +16,12 @@ class Player extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepPurple[400],
         centerTitle: true,
         title: const Text('Anitube'),
         elevation: 50,
       ),
+      backgroundColor: Colors.deepPurpleAccent[100],
       body: Center(
         child: Column(
           children: [
